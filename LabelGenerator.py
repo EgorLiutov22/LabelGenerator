@@ -14,7 +14,7 @@ while i in range(0,lenght+1):
     nomenclature = df.loc[i]['nomenclature']
     barcodenum = df.loc[i]['barcode']
     bc = barcode.get('code128', str(barcodenum), writer=ImageWriter())
-    bcadr = bc.save('bc' + nomenclature)
+    bcadr = bc.save('bctemp')
     bcimg = Image.open(bcadr)
     new_img = Image.new('1', (W, H), 'white')
     font = ImageFont.truetype(r'./AlkesLight.ttf', size = 25) #set fonts and sizes
