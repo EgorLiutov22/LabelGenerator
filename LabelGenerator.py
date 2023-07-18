@@ -6,11 +6,10 @@ df = pd.read_excel('./barcodes.xlsx', index_col = 'indexes')
 lenght = df.shape[0]
 W = 456 #set label size ( this size is for 58 mm * 40 mm labels)
 H = 314
-i = 1
-while i in range(0,lenght+1):
+companyname = ('Companyname') #set company name
+for i in range(lenght+1):
     price = df.loc[i]['price']
     price_print = ('Price: ' + str(price) + ' dollars') #set inscription price and currency on required language
-    companyname = ('Companyname') #set company name
     nomenclature = df.loc[i]['nomenclature']
     barcodenum = df.loc[i]['barcode']
     bc = barcode.get('code128', str(barcodenum), writer=ImageWriter())
@@ -36,4 +35,4 @@ while i in range(0,lenght+1):
     new_img.show() #show result
 
     new_img.save(nomenclature + '.png') #save result
-    i = i + 1
+
